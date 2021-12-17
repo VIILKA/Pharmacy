@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="400.0" prefWidth="800.0" style="-fx-background-color: transperant;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pharmacy.Window2Controller">
+   <children>
+      <AnchorPane fx:id="windowSignIn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="780.0" styleClass="mainAnchor" stylesheets="@styleSheet.css">
+         <children>
+            <Pane layoutX="108.0" layoutY="41.0" prefHeight="337.0" prefWidth="199.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" />
+            <Label fx:id="showLabel" layoutX="174.0" layoutY="28.0" prefHeight="25.0" prefWidth="168.0" />
+            <Button fx:id="enterButton1" layoutX="709.0" layoutY="460.0" mnemonicParsing="false" onAction="#clickOnEnterButtonAction" text="register" />
+            <Label fx:id="lognLabel" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="398.0" layoutY="98.0" prefHeight="19.0" prefWidth="128.0" textAlignment="CENTER" textFill="#f2170b">
+               <font>
+                  <Font name="System Italic" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="passwordLabel" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="398.0" layoutY="147.0" prefHeight="19.0" prefWidth="128.0" textAlignment="CENTER" textFill="#eb0b0b">
+               <font>
+                  <Font name="System Italic" size="13.0" />
+               </font>
+            </Label>
+            <HBox alignment="TOP_CENTER" layoutX="212.0" layoutY="188.0" prefHeight="37.0" prefWidth="180.0" />
+            <ImageView fx:id="zxc" fitHeight="287.0" fitWidth="305.0" layoutX="462.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@pills.png" />
+               </image>
+            </ImageView>
+            <Label alignment="TOP_CENTER" contentDisplay="TOP" layoutX="144.0" layoutY="54.0" prefHeight="47.0" prefWidth="128.0" text="Sign In" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="31.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="passwordTextField" layoutX="133.0" layoutY="175.0" promptText="password" styleClass="passwordTextField" stylesheets="@styleSheet.css" />
+            <TextField fx:id="loginTextField" layoutX="133.0" layoutY="117.0" prefHeight="26.0" prefWidth="150.0" promptText="login" stylesheets="@styleSheet.css" />
+            <Button fx:id="signIn" layoutX="171.0" layoutY="319.0" mnemonicParsing="false" onAction="#SignInButtonAction" styleClass="Button" stylesheets="@styleSheet.css" text="sign in" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

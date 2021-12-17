@@ -1,0 +1,105 @@
+.signInWindow{
+    -fx-background-color: #28e50e;
+}
+
+.loginTextField{
+    -fx-background-color: #28e50e;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-background-radius: 0 ;
+}
+
+/*.loginTextField:focused {*/
+/*    -fx-background-color: -fx-text-box-border, -fx-background ;*/
+/*    -fx-background-insets: 0, 0 0 1 0 ;*/
+/*    -fx-background-radius: 0 ;*/
+/*}*/
+
+
+.button3
+{
+    -fx-background-color : #141124;
+    -fx-background-radius :  0 0 0 0;
+}
+.mainAnchor {
+    -fx-background-image:url(backround.jpg);
+    -fx-background-size: cover;
+    -fx-background-position: center;
+}
+.button3:hover
+{
+    -fx-background-color : #524A7B ;
+}
+.button3:pressed
+{
+    -fx-background-color : #2F2B43 ;
+}
+
+.button4
+{
+    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
+    -fx-background-radius :  30 30 30 30;
+}
+.button4:hover
+{
+    -fx-background-color :linear-gradient(to top left, #D4CEE3, #41951C);
+    -fx-background-radius :  30 30 30 30;
+}
+.button4:pressed
+{
+    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
+    -fx-background-radius :  30 30 30 30;
+}
+
+.loginTextField:hover{
+    -fx-background-color: transparent, #909090, transparent, white;
+    -fx-background-radius: 0, 0, 0, 0;
+    -fx-padding: 0.166667em;
+}
+
+
+
+
+
+.record-sales {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #BBBAFF 0%, #6966FE 100%),
+            #BBBAFF,
+            #6966FE,
+            radial-gradient(center 50% 50%, radius 100%, #d86e3a, #c54e2c);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+}
+.Button {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #00FFA6 0%, #C4F440 100%),
+            #00FFA6,
+            #C4F440,
+            radial-gradient(center 50% 50%, radius 100%, #00FFA6, #C4F440);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+}
+.Button:hover {
+    -fx-background-color:
+            linear-gradient(from 0% 93% to 0% 100%, #02D68C 0%, #ACDC27 100%),
+            #02D68C,
+            #ACDC27,
+            radial-gradient(center 50% 50%, radius 100%, #02D68C, #ACDC27);
+}
+.Button:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+.Button Text {
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
+}
+
+
