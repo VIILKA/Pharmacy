@@ -21,9 +21,10 @@
     -fx-background-radius :  0 0 0 0;
 }
 .mainAnchor {
-    -fx-background-image:url(backround.jpg);
+    -fx-background-image:url(backround.jpg.png);
     -fx-background-size: cover;
     -fx-background-position: center;
+
 }
 .button3:hover
 {
@@ -101,5 +102,7 @@
     -fx-fill: white;
     -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
 }
+
+
 
 

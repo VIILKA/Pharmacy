@@ -128,6 +128,12 @@ public class Window2Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         RotateTransition rotate = new RotateTransition();
         rotate.setNode(zxc);
+        rotate.setDuration(Duration.millis(5000));
+        rotate.setCycleCount(TranslateTransition.INDEFINITE);
+        rotate.setInterpolator(Interpolator.LINEAR);
+        rotate.setByAngle(360);
+        rotate.play();
+
 
     }
 }
