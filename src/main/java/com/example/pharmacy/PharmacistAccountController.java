@@ -16,6 +16,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
@@ -528,8 +530,16 @@ public class PharmacistAccountController {
 
     @FXML
     void ClickRemoveFromOrderedButtonInOrderAnchorpane(ActionEvent event) throws IOException, SQLException, ClassNotFoundException {
-        DialogWindowOfRemoveFromAlreadyOrderedListController answer = new DialogWindowOfRemoveFromAlreadyOrderedListController();
+        if(OrderedListTableViewInOrderAnchorpane.getSelectionModel().getSelectedItem().getName().isEmpty()){
+            return;
+        }
+        Connection conn = dbConnection.getConnected();
 
+        String query = "UPDATE `dialogwindows` SET`value`= '" + OrderedListTableViewInOrderAnchorpane.getSelectionModel().getSelectedItem().getName() + "' WHERE `name` = 'dialog window 1'";
+        PreparedStatement prs = conn.prepareStatement(query);
+        prs.executeUpdate();
+        prs.close();
+        conn.close();
 
         Deliveryman d = new Deliveryman();
         Stage stage = new Stage();
@@ -540,10 +550,6 @@ public class PharmacistAccountController {
         stage.show();
 
 
-
-        if(answer.getChoice()){
-            d.delete("for_deliveryman", "name", OrderedListTableViewInOrderAnchorpane.getSelectionModel().getSelectedItem().getName());
-        }
 
         ClickOnOrderDrugButton(new ActionEvent());
 
