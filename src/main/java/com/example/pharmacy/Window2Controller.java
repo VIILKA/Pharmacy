@@ -73,13 +73,14 @@ public class Window2Controller implements Initializable {
         }
 
 
-        String login = null, password = null;
-        ResultSet res = au.select("authorization", "ID_accType", accT);
+        String password = null;
+        boolean b = false;
+        ResultSet res = au.select("authorization", "login", loginTextField.getText());
         while(res.next()){
-            login = res.getString("login");
+            b = true;
             password = res.getString("password");
         }
-        if(loginTextField.getText().equals(login)){
+        if(b){
             if(passwordTextField.getText().equals(password)){
                 if(accT.equals("1")){
                     Stage stage1 = (Stage) signIn.getScene().getWindow();
@@ -119,8 +120,17 @@ public class Window2Controller implements Initializable {
     }
 
     @FXML
-    void clickOnEnterButtonAction(ActionEvent event) {
+    void clickOnEnterButtonAction(ActionEvent event) throws IOException {
+        Stage stage1 = (Stage) signIn.getScene().getWindow();
+        stage1.close();
 
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("registration.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 820, 520);
+        stage.setTitle("Registration");
+        stage.setScene(scene);
+        stage.show();
+        System.out.println("registration");
     }
 
 

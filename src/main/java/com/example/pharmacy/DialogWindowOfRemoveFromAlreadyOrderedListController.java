@@ -5,6 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class DialogWindowOfRemoveFromAlreadyOrderedListController {
 
     @FXML
@@ -23,13 +28,19 @@ public class DialogWindowOfRemoveFromAlreadyOrderedListController {
     }
 
     @FXML
-    void ClickYes(ActionEvent event) {
+    void ClickYes(ActionEvent event) throws SQLException, ClassNotFoundException {
+        Deliveryman d = new Deliveryman();
+        Connection conn = dbConnection.getConnected();
 
-        choice = true;
-
+        ResultSet res = conn.createStatement().executeQuery("SELECT `value` FROM `dialogwindows` WHERE `name` = 'dialog window 1'");
+        while(res.next()) {
+                System.out.println("deleted");
+                d.delete("for_deliveryman", "name", res.getString("value"));
+        }
 
         Stage stage1 = (Stage) No.getScene().getWindow();
         stage1.close();
+
 
     }
 
