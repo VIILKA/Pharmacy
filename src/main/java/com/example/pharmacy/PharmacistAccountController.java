@@ -648,6 +648,7 @@ public class PharmacistAccountController {
 
 
 
+
     @FXML
     void ClickOnSearchDrugButton(ActionEvent event) throws SQLException, ClassNotFoundException {
         MiniWindow1.setVisible(false);

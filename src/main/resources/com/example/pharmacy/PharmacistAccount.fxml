@@ -1,146 +1,270 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="701.0" styleClass="pharmacistAccAnchorpane" stylesheets="@styleSheet.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pharmacy.PharmacistAccountController">
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pharmacy.PharmacistAccountController">
    <children>
-      <Label fx:id="PharmacistAccLabel" alignment="TOP_CENTER" layoutX="171.0" layoutY="14.0" prefHeight="26.0" prefWidth="338.0" text="Pharmacist's account">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <VBox layoutX="8.0" layoutY="41.0" prefHeight="267.0" prefWidth="138.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #cbf3f0;" styleClass="pharmacistAccAnchorpane" stylesheets="@styleSheet.css">
          <children>
-            <Button fx:id="SearchDrugButton" mnemonicParsing="false" onAction="#ClickOnSearchDrugButton" prefHeight="35.0" prefWidth="138.0" text="Search Drug" />
-            <Button fx:id="ChangePriceButton" layoutX="10.0" layoutY="45.0" mnemonicParsing="false" onAction="#ClickOnChangePriceButton" prefHeight="35.0" prefWidth="138.0" text="Change Price" />
-            <Button fx:id="SellButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#ClickOnSellButton" prefHeight="35.0" prefWidth="138.0" text="Sell" />
-            <Button fx:id="SoldButton" layoutX="10.0" layoutY="80.0" mnemonicParsing="false" onAction="#ClickOnSoldButton" prefHeight="35.0" prefWidth="138.0" text="Sold" />
-            <Button fx:id="OrderDrugButton" layoutX="10.0" layoutY="80.0" mnemonicParsing="false" onAction="#ClickOnOrderDrugButton" prefHeight="35.0" prefWidth="138.0" text="Order Drug" />
-            <Button fx:id="HelpButton" layoutX="10.0" layoutY="115.0" mnemonicParsing="false" onAction="#ClickOnHelpButton" prefHeight="35.0" prefWidth="138.0" text="Help" />
-            <Button fx:id="BackToAuthorization" layoutX="10.0" layoutY="150.0" mnemonicParsing="false" onAction="#ClickOnBackToAuthorization" prefHeight="35.0" prefWidth="138.0" text="Back To Authoriization" />
+            <AnchorPane fx:id="MiniWindow1" layoutX="263.0" layoutY="96.0" prefHeight="470.0" prefWidth="574.0" visible="false" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="4.0">
+               <children>
+                  <TextField fx:id="SearchLabel" layoutX="14.0" layoutY="33.0" onAction="#searchAction" prefHeight="25.0" prefWidth="316.0" promptText="Search..." style="-fx-background-color: #ffffff;" styleClass="table-view" stylesheets="@styleSheet.css" />
+                  <TableView fx:id="tableOfDrugs" layoutX="14.0" layoutY="50.0" prefHeight="390.0" prefWidth="538.0" stylesheets="@styleSheet.css" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="22.0">
+                    <columns>
+                      <TableColumn fx:id="ID" prefWidth="34.0" text="ID" />
+                      <TableColumn fx:id="Name" prefWidth="91.0" text="Name" />
+                        <TableColumn fx:id="Quantity" prefWidth="64.0" text="Quantity" />
+                        <TableColumn fx:id="Manufacturer" prefWidth="64.0" text="Manufacturer" />
+                        <TableColumn fx:id="Symptomatology" prefWidth="98.0" text="Symptomatology" />
+                        <TableColumn fx:id="Price" prefWidth="79.0" text="Price" />
+                        <TableColumn fx:id="Discount" prefWidth="113.0" text="Discount" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="255.0" layoutY="2.0" prefHeight="24.0" prefWidth="64.0" text="Search">
+                     <font>
+                        <Font name="Wingdings" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="windowChangePrice" layoutX="220.0" layoutY="29.0" prefHeight="463.0" prefWidth="558.0" visible="false" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="29.0">
+               <children>
+                  <TextField fx:id="NameTextField" layoutX="63.0" layoutY="86.0" promptText="Name" />
+                  <TextField fx:id="PriceTextField" layoutX="63.0" layoutY="127.0" promptText="Price" />
+                  <Label alignment="TOP_CENTER" layoutX="222.0" layoutY="89.0" prefHeight="19.0" prefWidth="301.0" text="Enter name of drug that you want to change" textAlignment="CENTER">
+                     <font>
+                        <Font name="Wingdings" size="15.0" />
+                     </font></Label>
+                  <Label alignment="TOP_CENTER" layoutX="222.0" layoutY="130.0" prefHeight="18.0" prefWidth="138.0" text="Enter the new price" textAlignment="CENTER">
+                     <font>
+                        <Font name="Wingdings 2" size="15.0" />
+                     </font></Label>
+                  <Button fx:id="ChangeButton" alignment="TOP_CENTER" layoutX="220.0" layoutY="229.0" mnemonicParsing="false" onAction="#ClickChangePriceButton" prefHeight="25.0" prefWidth="111.0" text="Change" />
+                  <Label fx:id="NameErrorTextField" alignment="TOP_CENTER" layoutX="445.0" layoutY="62.0" prefHeight="17.0" prefWidth="99.0" textAlignment="CENTER" textFill="#f50e0e" />
+                  <Label fx:id="PriceErrorTextField" alignment="TOP_CENTER" layoutX="438.0" layoutY="103.0" prefHeight="17.0" prefWidth="99.0" textAlignment="CENTER" textFill="#f50e0e" />
+                  <Label fx:id="SuccessPriceChangeTextField1" alignment="TOP_CENTER" layoutX="199.0" layoutY="214.0" prefHeight="17.0" prefWidth="162.0" textAlignment="CENTER" textFill="#2bf50f" />
+                  <Label layoutX="222.0" text="Change Price">
+                     <font>
+                        <Font name="Wingdings 2" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="windowOrder" layoutX="229.0" layoutY="30.0" prefHeight="463.0" prefWidth="558.0" visible="false" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="30.0">
+               <children>
+                  <TextField fx:id="NameTextFiealInOrderAnchorpane" layoutX="211.0" layoutY="186.0" promptText="Name" />
+                  <TextField fx:id="QuantityTextfieldInOrderAnchorpane" layoutX="211.0" layoutY="222.0" promptText="Quantity" />
+                  <Button fx:id="AddButtonInOrderAnchorpane" layoutX="267.0" layoutY="260.0" mnemonicParsing="false" onAction="#ClickAddButtonInOrderAnchorpane" text="Add" />
+                  <TableView fx:id="OrderListTableViewInOrderAnchorpane" layoutX="372.0" layoutY="55.0" prefHeight="342.0" prefWidth="171.0">
+                    <columns>
+                      <TableColumn fx:id="NameColumnInOrderAnchorpane" prefWidth="103.0" text="Name" />
+                      <TableColumn fx:id="QuantityColumnInOrderAnchorpane" prefWidth="67.0" text="Quantity" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="OrderButtonInOrderAnchorpane" layoutX="458.0" layoutY="404.0" mnemonicParsing="false" onAction="#ClickOrderButtonInOrderAnchorpane" prefHeight="26.0" prefWidth="78.0" text="Order" />
+                  <Label fx:id="NameErrorInOrderAnchorpane" layoutX="31.0" layoutY="31.0" prefHeight="17.0" prefWidth="138.0" textFill="#f50c0c" />
+                  <Label fx:id="QuantityErrorInOrderAnchorpane" layoutX="286.0" layoutY="18.0" prefHeight="17.0" prefWidth="138.0" textFill="#f50c0c" />
+                  <Label alignment="TOP_CENTER" layoutX="395.0" layoutY="31.0" prefHeight="17.0" prefWidth="138.0" text="Order List" textFill="#1e1e1d">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="RemoveButtonInOrderAnchorpane" layoutX="366.0" layoutY="404.0" mnemonicParsing="false" onAction="#ClickRemoveButtonInOrderAnchorpane" prefHeight="26.0" prefWidth="78.0" text="Remove" />
+                  <Label fx:id="SuccessLabelInOrderAnchorpane" alignment="TOP_CENTER" layoutX="201.0" layoutY="140.0" prefHeight="17.0" prefWidth="171.0" textFill="#17f525" />
+                  <TableView fx:id="OrderedListTableViewInOrderAnchorpane" layoutX="14.0" layoutY="56.0" prefHeight="342.0" prefWidth="184.0">
+                     <columns>
+                        <TableColumn fx:id="NameOrderedListColumnInOrderAnchorpane" prefWidth="108.0" text="Name" />
+                        <TableColumn fx:id="QuantityOrderedListColumnInOrderAnchorpane" prefWidth="75.0" text="Quantity" />
+                     </columns>
+                  </TableView>
+                  <Label alignment="TOP_CENTER" layoutX="31.0" layoutY="31.0" prefHeight="17.0" prefWidth="138.0" text="Ordered list" textFill="#1e1e1d">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="RemoveFromOrderedButtonInOrderAnchorpane" layoutX="120.0" layoutY="405.0" mnemonicParsing="false" onAction="#ClickRemoveFromOrderedButtonInOrderAnchorpane" prefHeight="26.0" prefWidth="78.0" text="Remove" />
+                  <Label fx:id="SuccessMassageFromRemove" alignment="TOP_CENTER" layoutX="205.0" layoutY="110.0" prefHeight="19.0" prefWidth="162.0" textFill="#0ce817">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="230.0" text="Order drug">
+                     <font>
+                        <Font name="Wingdings 2" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="windowSell" layoutX="229.0" layoutY="29.0" prefHeight="463.0" prefWidth="558.0" visible="false" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="29.0">
+               <children>
+                  <TableView fx:id="SellingDrugListTable" layoutX="299.0" layoutY="67.0" prefHeight="349.0" prefWidth="207.0" AnchorPane.bottomAnchor="46.599999999999966" AnchorPane.rightAnchor="52.19999999999999">
+                     <columns>
+                        <TableColumn fx:id="NameColumnInSellAnchorpane" prefWidth="85.0" text="Name" />
+                        <TableColumn fx:id="QuantityColumnInSellAnchorpane" prefWidth="54.0" text="Quantity" />
+                        <TableColumn fx:id="discountColumnInSellAnchorpane" prefWidth="67.0" text="Discount" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="sellButtonInSellAnchorpane" layoutX="452.0" layoutY="420.0" mnemonicParsing="false" onAction="#ClickSellButtonInSellAnchorpane" prefHeight="26.0" prefWidth="54.0" text="Sell" />
+                  <TextField fx:id="NameForSellTextField" layoutX="66.0" layoutY="88.0" prefHeight="25.0" prefWidth="123.0" promptText="Name" AnchorPane.bottomAnchor="349.6" AnchorPane.leftAnchor="66.0" />
+                  <TextField fx:id="QuantityForSellTextField" layoutX="66.0" layoutY="124.0" prefHeight="25.0" prefWidth="123.0" promptText="Quantity" />
+                  <TextField fx:id="DiscountForSellTextField" layoutX="66.0" layoutY="164.0" prefHeight="25.0" prefWidth="123.0" promptText="Discount" />
+                  <Label alignment="TOP_CENTER" layoutX="353.0" layoutY="39.0" prefHeight="17.0" prefWidth="99.0" text="Selling List">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="AddToListButton" layoutX="78.0" layoutY="206.0" mnemonicParsing="false" onAction="#ClickAddToListButton" prefHeight="25.0" prefWidth="99.0" text="Add To List" />
+                  <Label fx:id="nameErrorInSellAnchorpane" layoutX="200.0" layoutY="127.0" prefHeight="20.0" prefWidth="123.0" textFill="#f20d0d" />
+                  <Label fx:id="quantityErrorInSellAnchorpane" layoutX="200.0" layoutY="168.0" prefHeight="17.0" prefWidth="99.0" textFill="#f20d0d" />
+                  <Label fx:id="DiscountErrorInSellAnchorpane" layoutX="200.0" layoutY="92.0" prefHeight="17.0" prefWidth="99.0" textFill="#f20d0d" />
+                  <Label fx:id="TotalCostLabelInSellAnchorpane" layoutX="299.0" layoutY="425.0" prefHeight="17.0" prefWidth="149.0" text="Total cost:" />
+                  <Button fx:id="RemoveButtonInSellAnchorpane" layoutX="77.0" layoutY="245.0" mnemonicParsing="false" onAction="#ClickRemoveButtonInSellButton" prefHeight="26.0" prefWidth="99.0" text="Remove" />
+                  <Label layoutX="263.0" layoutY="-1.0" prefHeight="24.0" prefWidth="31.0" text="Sell">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="windowHelp" layoutX="229.0" layoutY="29.0" prefHeight="477.0" prefWidth="558.0" visible="false" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="29.0">
+               <children>
+                  <ImageView fitHeight="109.0" fitWidth="99.0" layoutX="229.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                     <effect>
+                        <DropShadow height="0.0" radius="0.08499999999999996" width="2.34" />
+                     </effect>
+                  </ImageView>
+                  <Label layoutX="261.0" layoutY="-1.0" text="Info">
+                     <font>
+                        <Font name="Wingdings 2" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="219.0" layoutY="87.0" text="PHARMACY">
+                     <font>
+                        <Font name="Microsoft Yi Baiti" size="28.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="244.0" layoutY="121.0" text="version: 1.0.0" />
+                  <Label layoutX="142.0" layoutY="139.0" text="Copyright (c) 2021 Pharmacy. All rights are reserved" />
+                  <Label layoutX="113.0" layoutY="181.0" prefHeight="22.0" prefWidth="332.0" text="A program for pharmacies to facilitate the sale">
+                     <font>
+                        <Font name="Leelawadee" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="120.0" layoutY="203.0" prefHeight="26.0" prefWidth="316.0" text="and delivery of drugs with an easy interface.">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="98.0" layoutY="261.0" prefHeight="22.0" prefWidth="184.0" text="Purpose of the program:">
+                     <font>
+                        <Font name="Yu Gothic Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="92.0" layoutY="295.0" text="-Facilitating the supply of drugs">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="92.0" layoutY="313.0" text="-Timely ordering of medicines">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="92.0" layoutY="331.0" text="-Work for a supplier with a pharmacy">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="92.0" layoutY="349.0" text="-Convenience of working with the drug database.">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="132.0" layoutY="414.0" text="Our contact: +996 500 81 18 81 / pharmacy@mail.com">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="SoldWindow" layoutX="222.0" layoutY="28.0" prefHeight="454.0" prefWidth="558.0" AnchorPane.leftAnchor="222.0" AnchorPane.topAnchor="28.0">
+               <children>
+                  <TextField fx:id="InSoldAnchopaneSearchTextField" layoutX="20.0" layoutY="33.0" prefHeight="25.0" prefWidth="201.0" promptText="Search" style="-fx-background-color: #ffffff;" styleClass="table-view" />
+                  <TableView fx:id="InSoldAnchopaneSoldTableView" layoutX="20.0" layoutY="63.0" prefHeight="401.0" prefWidth="518.0">
+                    <columns>
+                      <TableColumn fx:id="InSoldAnchopaneNameColumn" prefWidth="99.0" text="name" />
+                      <TableColumn fx:id="InSoldAnchopaneQuantityColumn" prefWidth="88.0" text="quantity" />
+                        <TableColumn fx:id="InSoldAnchorpanePriceColumn" prefWidth="84.0" text="price" />
+                        <TableColumn fx:id="InSoldAnchopaneDateColumn" prefWidth="93.0" text="date" />
+                        <TableColumn fx:id="InSoldAnchopaneDiscountColumn" prefWidth="101.0" text="discount" />
+                        <TableColumn fx:id="InSoldAnchopaneTotalColumn" prefWidth="51.0" text="total" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="259.0" layoutY="-1.0" text="Sold">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Pane prefHeight="500.0" prefWidth="218.0" style="-fx-background-color: #6495ED;">
+               <children>
+                  <Button fx:id="SearchDrugButton" layoutX="28.0" layoutY="96.0" mnemonicParsing="false" onAction="#ClickOnSearchDrugButton" prefHeight="35.0" prefWidth="162.0" text="Search Drug">
+                     <font>
+                        <Font name="Wingdings" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="ChangePriceButton" layoutX="28.0" layoutY="150.0" mnemonicParsing="false" onAction="#ClickOnChangePriceButton" prefHeight="35.0" prefWidth="162.0" text="Change Price" />
+                  <Button fx:id="SellButton" layoutX="28.0" layoutY="205.0" mnemonicParsing="false" onAction="#ClickOnSellButton" prefHeight="35.0" prefWidth="162.0" text="Sell">
+                     <font>
+                        <Font name="Wingdings" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="SoldButton" layoutX="28.0" layoutY="266.0" mnemonicParsing="false" onAction="#ClickOnSoldButton" prefHeight="35.0" prefWidth="162.0" text="Sold" />
+                  <Button fx:id="OrderDrugButton" layoutX="28.0" layoutY="323.0" mnemonicParsing="false" onAction="#ClickOnOrderDrugButton" prefHeight="35.0" prefWidth="162.0" text="Order Drug" />
+                  <Button fx:id="HelpButton" layoutX="28.0" layoutY="383.0" mnemonicParsing="false" onAction="#ClickOnHelpButton" prefHeight="35.0" prefWidth="162.0" text="Help" />
+                  <Button fx:id="BackToAuthorization" layoutX="28.0" layoutY="439.0" mnemonicParsing="false" onAction="#ClickOnBackToAuthorization" prefHeight="35.0" prefWidth="162.0" text="Back To Authoriization" />
+                  <Circle fill="WHITE" layoutX="109.0" layoutY="48.0" radius="39.0" stroke="BLACK" strokeType="INSIDE" />
+                  <ImageView fitHeight="109.0" fitWidth="99.0" layoutX="60.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                     <effect>
+                        <DropShadow height="0.0" radius="0.08499999999999996" width="2.34" />
+                     </effect>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label fx:id="PharmacistAccLabel" alignment="TOP_CENTER" layoutX="409.0" prefHeight="27.0" prefWidth="184.0" text="Pharmacist's account">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Line endX="251.5999755859375" layoutX="424.0" layoutY="27.0" startX="-100.0" />
          </children>
-      </VBox>
-      <AnchorPane fx:id="MiniWindow1" layoutX="31.0" layoutY="90.0" prefHeight="308.0" prefWidth="558.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <children>
-            <TextField fx:id="SearchLabel" layoutX="228.0" layoutY="11.0" onAction="#searchAction" prefHeight="25.0" prefWidth="316.0" promptText="Search..." />
-            <TableView fx:id="tableOfDrugs" layoutY="43.0" prefHeight="246.0" prefWidth="544.0" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="14.0">
-              <columns>
-                <TableColumn fx:id="ID" prefWidth="34.0" text="ID" />
-                <TableColumn fx:id="Name" prefWidth="91.0" text="Name" />
-                  <TableColumn fx:id="Quantity" prefWidth="64.0" text="Quantity" />
-                  <TableColumn fx:id="Manufacturer" prefWidth="64.0" text="Manufacturer" />
-                  <TableColumn fx:id="Symptomatology" prefWidth="98.0" text="Symptomatology" />
-                  <TableColumn fx:id="Price" prefWidth="79.0" text="Price" />
-                  <TableColumn fx:id="Discount" prefWidth="113.0" text="Discount" />
-              </columns>
-            </TableView>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="windowChangePrice" layoutX="153.0" layoutY="102.0" prefHeight="308.0" prefWidth="558.0" AnchorPane.leftAnchor="143.0" AnchorPane.topAnchor="92.0">
-         <children>
-            <TextField fx:id="NameTextField" layoutX="279.0" layoutY="58.0" promptText="Name" />
-            <TextField fx:id="PriceTextField" layoutX="279.0" layoutY="99.0" promptText="Price" />
-            <Label alignment="TOP_CENTER" layoutX="18.0" layoutY="62.0" prefHeight="17.0" prefWidth="241.0" text="Enter name of drug that you want to change" textAlignment="CENTER" />
-            <Label alignment="TOP_CENTER" layoutX="88.0" layoutY="103.0" prefHeight="17.0" prefWidth="138.0" text="Enter the new price" textAlignment="CENTER" />
-            <Button fx:id="ChangeButton" alignment="TOP_CENTER" layoutX="224.0" layoutY="172.0" mnemonicParsing="false" onAction="#ClickChangePriceButton" prefHeight="25.0" prefWidth="111.0" text="Change" />
-            <Label fx:id="NameErrorTextField" alignment="TOP_CENTER" layoutX="445.0" layoutY="62.0" prefHeight="17.0" prefWidth="99.0" textAlignment="CENTER" textFill="#f50e0e" />
-            <Label fx:id="PriceErrorTextField" alignment="TOP_CENTER" layoutX="438.0" layoutY="103.0" prefHeight="17.0" prefWidth="99.0" textAlignment="CENTER" textFill="#f50e0e" />
-            <Label fx:id="SuccessPriceChangeTextField1" alignment="TOP_CENTER" layoutX="199.0" layoutY="214.0" prefHeight="17.0" prefWidth="162.0" textAlignment="CENTER" textFill="#2bf50f" />
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="windowOrder" layoutX="153.0" layoutY="102.0" prefHeight="308.0" prefWidth="558.0" AnchorPane.leftAnchor="143.0" AnchorPane.topAnchor="92.0">
-         <children>
-            <TextField fx:id="NameTextFiealInOrderAnchorpane" layoutX="214.0" layoutY="36.0" promptText="Name" />
-            <TextField fx:id="QuantityTextfieldInOrderAnchorpane" layoutX="214.0" layoutY="72.0" promptText="Quantity" />
-            <Button fx:id="AddButtonInOrderAnchorpane" layoutX="270.0" layoutY="110.0" mnemonicParsing="false" onAction="#ClickAddButtonInOrderAnchorpane" text="Add" />
-            <TableView fx:id="OrderListTableViewInOrderAnchorpane" layoutX="373.0" layoutY="41.0" prefHeight="215.0" prefWidth="171.0">
-              <columns>
-                <TableColumn fx:id="NameColumnInOrderAnchorpane" prefWidth="103.0" text="Name" />
-                <TableColumn fx:id="QuantityColumnInOrderAnchorpane" prefWidth="67.0" text="Quantity" />
-              </columns>
-            </TableView>
-            <Button fx:id="OrderButtonInOrderAnchorpane" layoutX="494.0" layoutY="269.0" mnemonicParsing="false" onAction="#ClickOrderButtonInOrderAnchorpane" text="Order" />
-            <Label fx:id="NameErrorInOrderAnchorpane" layoutX="31.0" layoutY="31.0" prefHeight="17.0" prefWidth="138.0" textFill="#f50c0c" />
-            <Label fx:id="QuantityErrorInOrderAnchorpane" layoutX="31.0" layoutY="76.0" prefHeight="17.0" prefWidth="138.0" textFill="#f50c0c" />
-            <Label alignment="TOP_CENTER" layoutX="396.0" layoutY="17.0" prefHeight="17.0" prefWidth="138.0" text="Order List" textFill="#1e1e1d">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Button fx:id="RemoveButtonInOrderAnchorpane" layoutX="407.0" layoutY="269.0" mnemonicParsing="false" onAction="#ClickRemoveButtonInOrderAnchorpane" text="Remove" />
-            <Label fx:id="SuccessLabelInOrderAnchorpane" alignment="TOP_CENTER" layoutX="164.0" layoutY="248.0" prefHeight="17.0" prefWidth="171.0" textFill="#17f525" />
-            <TableView fx:id="OrderedListTableViewInOrderAnchorpane" layoutX="15.0" layoutY="41.0" prefHeight="215.0" prefWidth="184.0">
-               <columns>
-                  <TableColumn fx:id="NameOrderedListColumnInOrderAnchorpane" prefWidth="108.0" text="Name" />
-                  <TableColumn fx:id="QuantityOrderedListColumnInOrderAnchorpane" prefWidth="75.0" text="Quantity" />
-               </columns>
-            </TableView>
-            <Label alignment="TOP_CENTER" layoutX="32.0" layoutY="17.0" prefHeight="17.0" prefWidth="138.0" text="Ordered list" textFill="#1e1e1d">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Button fx:id="RemoveFromOrderedButtonInOrderAnchorpane" layoutX="135.0" layoutY="265.0" mnemonicParsing="false" onAction="#ClickRemoveFromOrderedButtonInOrderAnchorpane" text="Remove" />
-            <Label fx:id="SuccessMassageFromRemove" alignment="TOP_CENTER" layoutX="220.0" layoutY="268.0" prefHeight="19.0" prefWidth="162.0" textFill="#0ce817">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
-      <AnchorPane fx:id="windowSell" layoutX="153.0" layoutY="102.0" prefHeight="308.0" prefWidth="558.0" AnchorPane.leftAnchor="143.0" AnchorPane.topAnchor="92.0">
-         <children>
-            <TableView fx:id="SellingDrugListTable" layoutX="376.0" layoutY="29.0" prefHeight="215.0" prefWidth="207.0" AnchorPane.bottomAnchor="64.0" AnchorPane.rightAnchor="14.0">
-               <columns>
-                  <TableColumn fx:id="NameColumnInSellAnchorpane" prefWidth="85.0" text="Name" />
-                  <TableColumn fx:id="QuantityColumnInSellAnchorpane" prefWidth="54.0" text="Quantity" />
-                  <TableColumn fx:id="discountColumnInSellAnchorpane" prefWidth="67.0" text="Discount" />
-               </columns>
-            </TableView>
-            <Button fx:id="sellButtonInSellAnchorpane" layoutX="493.0" layoutY="252.0" mnemonicParsing="false" onAction="#ClickSellButtonInSellAnchorpane" text="Sell" />
-            <TextField fx:id="NameForSellTextField" layoutX="200.0" layoutY="29.0" prefHeight="25.0" prefWidth="123.0" promptText="Name" AnchorPane.bottomAnchor="254.0" AnchorPane.leftAnchor="200.0" />
-            <TextField fx:id="QuantityForSellTextField" layoutX="200.0" layoutY="88.0" prefHeight="25.0" prefWidth="123.0" promptText="Quantity" />
-            <TextField fx:id="DiscountForSellTextField" layoutX="200.0" layoutY="142.0" prefHeight="25.0" prefWidth="123.0" promptText="Discount" />
-            <Label alignment="TOP_CENTER" layoutX="411.0" layoutY="6.0" prefHeight="17.0" prefWidth="99.0" text="Selling List">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Button fx:id="AddToListButton" layoutX="222.0" layoutY="187.0" mnemonicParsing="false" onAction="#ClickAddToListButton" prefHeight="25.0" prefWidth="99.0" text="Add To List" />
-            <Label fx:id="nameErrorInSellAnchorpane" layoutX="200.0" layoutY="59.0" prefHeight="20.0" prefWidth="123.0" textFill="#f20d0d" />
-            <Label fx:id="quantityErrorInSellAnchorpane" layoutX="200.0" layoutY="119.0" prefHeight="17.0" prefWidth="99.0" textFill="#f20d0d" />
-            <Label fx:id="DiscountErrorInSellAnchorpane" layoutX="200.0" layoutY="167.0" prefHeight="17.0" prefWidth="99.0" textFill="#f20d0d" />
-            <Label fx:id="TotalCostLabelInSellAnchorpane" layoutX="316.0" layoutY="256.0" prefHeight="17.0" prefWidth="149.0" text="Total cost:" />
-            <Button fx:id="RemoveButtonInSellAnchorpane" layoutX="262.0" layoutY="219.0" mnemonicParsing="false" onAction="#ClickRemoveButtonInSellButton" text="Remove" />
-         </children></AnchorPane>
-      <AnchorPane fx:id="windowHelp" layoutX="153.0" layoutY="102.0" prefHeight="308.0" prefWidth="558.0" AnchorPane.leftAnchor="143.0" AnchorPane.topAnchor="92.0">
-         <children>
-            <Label alignment="TOP_CENTER" layoutX="142.0" layoutY="86.0" prefHeight="17.0" prefWidth="274.0" text="Help window">
-               <font>
-                  <Font size="46.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
-      <AnchorPane fx:id="SoldWindow" layoutX="153.0" layoutY="102.0" prefHeight="308.0" prefWidth="558.0" AnchorPane.leftAnchor="143.0" AnchorPane.topAnchor="92.0">
-         <children>
-            <TextField fx:id="InSoldAnchopaneSearchTextField" layoutX="335.0" layoutY="14.0" prefHeight="25.0" prefWidth="201.0" promptText="Search" />
-            <TableView fx:id="InSoldAnchopaneSoldTableView" layoutX="23.0" layoutY="44.0" prefHeight="246.0" prefWidth="517.0">
-              <columns>
-                <TableColumn fx:id="InSoldAnchopaneNameColumn" prefWidth="99.0" text="name" />
-                <TableColumn fx:id="InSoldAnchopaneQuantityColumn" prefWidth="88.0" text="quantity" />
-                  <TableColumn fx:id="InSoldAnchorpanePriceColumn" prefWidth="84.0" text="price" />
-                  <TableColumn fx:id="InSoldAnchopaneDateColumn" prefWidth="93.0" text="date" />
-                  <TableColumn fx:id="InSoldAnchopaneDiscountColumn" prefWidth="101.0" text="discount" />
-                  <TableColumn fx:id="InSoldAnchopaneTotalColumn" prefWidth="51.0" text="total" />
-              </columns>
-            </TableView>
-         </children>
+         <effect>
+            <DropShadow />
+         </effect>
       </AnchorPane>
    </children>
-</AnchorPane>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

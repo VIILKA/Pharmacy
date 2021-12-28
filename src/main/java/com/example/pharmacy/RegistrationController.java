@@ -20,6 +20,9 @@ public class RegistrationController {
     private ChoiceBox<String> AccType;
 
     @FXML
+    private Button back_button;
+
+    @FXML
     private Button SignUpButton;
 
     @FXML
@@ -86,6 +89,18 @@ public class RegistrationController {
         stage.setScene(scene);
         stage.show();
         System.out.println("Authorization");
+    }
+    @FXML
+    void back_action(ActionEvent event) throws IOException {
+        Stage stage1 = (Stage) back_button.getScene().getWindow();
+        stage1.close();
+
+        Stage stage = new Stage();
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("2_window.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 510);
+        stage.setTitle("Authorization");
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

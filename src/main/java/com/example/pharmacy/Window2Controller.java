@@ -24,7 +24,7 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.ResourceBundle;
 
-public class Window2Controller implements Initializable {
+public class Window2Controller  {
     ObservableList<String> choiceList = FXCollections.observableArrayList("Pharmacist", "Deliveryman");
     Authoziration au = new Authoziration();
 
@@ -134,18 +134,7 @@ public class Window2Controller implements Initializable {
     }
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        RotateTransition rotate = new RotateTransition();
-        rotate.setNode(zxc);
-        rotate.setDuration(Duration.millis(5000));
-        rotate.setCycleCount(TranslateTransition.INDEFINITE);
-        rotate.setInterpolator(Interpolator.LINEAR);
-        rotate.setByAngle(360);
-        rotate.play();
 
-
-    }
 }
 
 
