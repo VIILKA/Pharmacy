@@ -313,13 +313,24 @@ public class DeliverymanAccountController {
 
         ResultSet res1 = d.select("for_deliveryman");
         ObservableList<String> res = FXCollections.observableArrayList();
+        ObservableList<String> res11 = FXCollections.observableArrayList();
 
         while(res1.next()){
             res.add(res1.getString("name"));
         }
 
+        res1 = d.select("new_drug_for_delivery");
+
+        while(res1.next()){
+            res11.add(res1.getString("name"));
+        }
+
+
         if(InDeliverDrugsNameTextField.getText().isEmpty()){
             InDeliverDrugsNameErrorLabel.setText("Invalid name");
+            return;
+        }else if(!(res.contains(InDeliverDrugsNameTextField.getText())) && !(res11.contains(InDeliverDrugsNameTextField.getText()))){
+            InDeliverDrugsNameErrorLabel.setText("Such drug was not ordered");
             return;
         }else if(!isNumeric(InDeliverDrugsQuantityTextField.getText()) || InDeliverDrugsQuantityTextField.getText().isEmpty()){
             InDeliverDrugsQuantityErrorLabel.setText("Invalid Quantity");

@@ -268,6 +268,35 @@ public class PharmacistAccountController {
                 p.insert(s.getName(), s.getQuantity());
             }
         }
+
+        res = p.select("new_drug_for_delivery");
+
+
+        while(res.next()){
+            list.add(res.getString("name"));
+        }
+
+        for(OrderList s: OrderListValues){
+            if(list.contains(s.getName())){
+                ResultSet res2 = p.select("new_drug_for_delivery", "name", s.getName());
+                String q = "";
+
+                while(res2.next()){
+                    q = res2.getString("quantity");
+                }
+
+                if(q.equals("")){
+                    q = "0";
+                }
+
+                System.out.println(q + " " + s.getQuantity());
+                System.out.println(String.valueOf(Integer.valueOf(q) + Integer.valueOf(s.getQuantity())));
+                p.update("new_drug_for_delivery","quantity", String.valueOf(Integer.valueOf(q) + Integer.valueOf(s.getQuantity())), "name", s.getName());
+
+            }
+        }
+
+
         OrderListValues.clear();
         OrderListTableViewInOrderAnchorpane.setItems(OrderListValues);
         ClickOnOrderDrugButton(new ActionEvent());
@@ -283,6 +312,12 @@ public class PharmacistAccountController {
 
         ResultSet res1 = p.select("drugs");
         ObservableList<String> res = FXCollections.observableArrayList();
+
+        while(res1.next()){
+            res.add(res1.getString("name"));
+        }
+
+        res1 = p.select("new_drug_for_delivery");
 
         while(res1.next()){
             res.add(res1.getString("name"));
@@ -747,9 +782,18 @@ public class PharmacistAccountController {
     @FXML
     void ClickSellButtonInSellAnchorpane(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
 
+        int count = 0;
         for(SellList s : SellingListTableValues){
+            count++;
             p.sellFunc(s.getName(), s.getQuantity(), s.getDiscount());
         }
+        Connection conn = dbConnection.getConnected();
+        String query = "UPDATE `dialogwindows` SET `value` = '" + count + "' WHERE `name` = 'chek_make'";
+        PreparedStatement prs = conn.prepareStatement(query);
+        prs.executeUpdate();
+
+        prs.close();
+        conn.close();
 
         SellingListTableValues.clear();
         SellingDrugListTable.setItems(SellingListTableValues);

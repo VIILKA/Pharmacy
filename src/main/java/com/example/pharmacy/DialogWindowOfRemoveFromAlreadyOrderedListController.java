@@ -5,10 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DialogWindowOfRemoveFromAlreadyOrderedListController {
 
@@ -33,13 +30,29 @@ public class DialogWindowOfRemoveFromAlreadyOrderedListController {
         Connection conn = dbConnection.getConnected();
 
         ResultSet res = conn.createStatement().executeQuery("SELECT `value` FROM `dialogwindows` WHERE `name` = 'dialog window 1'");
+
+        Statement state = conn.createStatement();
+
         while(res.next()) {
-                System.out.println("deleted");
+            String query = "SELECT * FROM `for_deliveryman` WHERE `name` = '" + res.getString("value") + "';";
+            ResultSet res1 = state.executeQuery(query);
+            if(res1.next()){
                 d.delete("for_deliveryman", "name", res.getString("value"));
+            }else{
+                d.delete("new_drug_for_delivery", "name", res.getString("value"));
+            }
+
+            System.out.println("deleted");
+
         }
+
+        res.close();
+        state.close();
+        conn.close();
 
         Stage stage1 = (Stage) No.getScene().getWindow();
         stage1.close();
+
 
 
     }
