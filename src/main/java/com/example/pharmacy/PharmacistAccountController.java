@@ -347,18 +347,31 @@ public class PharmacistAccountController {
         }
 
 
-
         if(!res.contains(NameForSellTextField.getText())){
             nameErrorInSellAnchorpane.setText("There is no such drug!");
             return;
-        }else if(!isNumeric(QuantityForSellTextField.getText()) || QuantityForSellTextField.getText().isEmpty() || QuantityForSellTextField.getText().contains(".") || QuantityForSellTextField.getText().contains(",") ){
+        }
+
+
+        ResultSet res2= p.select("name",NameForSellTextField.getText());
+        int bd_quantity = 0;
+        while (res2.next()){
+            bd_quantity = res2.getInt("quantity");
+        }
+
+
+        if(!isNumeric(QuantityForSellTextField.getText()) || QuantityForSellTextField.getText().isEmpty() || QuantityForSellTextField.getText().contains(".") || QuantityForSellTextField.getText().contains(",") || Integer.valueOf(QuantityForSellTextField.getText())>bd_quantity || Integer.valueOf(QuantityForSellTextField.getText())==0  ){
             quantityErrorInSellAnchorpane.setText("Invalid Quantity");
             return;
         }
-        else if(!isNumeric(DiscountForSellTextField.getText()) || DiscountForSellTextField.getText().isEmpty()){
+        else if(DiscountForSellTextField.getText().isEmpty()){DiscountForSellTextField.setText("0");}
+        if(!isNumeric(DiscountForSellTextField.getText()) || Integer.parseInt(DiscountForSellTextField.getText())>100) {
             DiscountErrorInSellAnchorpane.setText("Invalid Discount");
             return;
         }
+
+
+
 
         NameColumnInSellAnchorpane.setCellValueFactory(new PropertyValueFactory<SellList, String>("Name"));
         QuantityColumnInSellAnchorpane.setCellValueFactory(new PropertyValueFactory<SellList, String>("Quantity"));
@@ -421,7 +434,7 @@ public class PharmacistAccountController {
             NameErrorTextField.setText("There is no such drug!");
             return;
         }else if(!isNumeric(PriceTextField.getText()) || PriceTextField.getText().isEmpty()){
-            PriceErrorTextField.setText("Invalid Quantity");
+            PriceErrorTextField.setText("Invalid Price");
             return;
         }
 

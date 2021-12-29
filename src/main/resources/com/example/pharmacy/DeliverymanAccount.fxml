@@ -1,86 +1,212 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pharmacy.DeliverymanAccountController">
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pharmacy.DeliverymanAccountController">
    <children>
-      <VBox layoutX="14.0" layoutY="113.0" prefHeight="191.0" prefWidth="125.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #fff7e4;">
          <children>
-            <Button fx:id="SearchDrugButton" mnemonicParsing="false" onAction="#ClickSearchDrugButton" prefHeight="32.0" prefWidth="125.0" text="Search Drug" />
-            <Button fx:id="DeliverDrugsButton" layoutX="10.0" layoutY="42.0" mnemonicParsing="false" onAction="#ClickDeliverDrugsButton" prefHeight="32.0" prefWidth="125.0" text="Deliver Drugs" />
-            <Button fx:id="ShowDeliveredDrugsButton" layoutX="10.0" layoutY="74.0" mnemonicParsing="false" onAction="#ClickShowDeliveredDrugsButton" prefHeight="32.0" prefWidth="125.0" text="Show Delivered Drugs" />
-            <Button fx:id="HelpButton" layoutX="10.0" layoutY="106.0" mnemonicParsing="false" onAction="#ClickHelpButton" prefHeight="32.0" prefWidth="125.0" text="Help" />
-            <Button fx:id="BackToAuthorizationButton" layoutX="10.0" layoutY="138.0" mnemonicParsing="false" onAction="#ClickBackToAuthorizationButton" prefHeight="38.0" prefWidth="125.0" text="Back to Authorization" />
-         </children>
-      </VBox>
-      <Label alignment="TOP_CENTER" layoutX="163.0" layoutY="27.0" prefHeight="48.0" prefWidth="274.0" text="Deliveryman's account">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Label>
-      <AnchorPane fx:id="ShowWindow" layoutX="180.0" layoutY="108.0" prefHeight="283.0" prefWidth="414.0" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="16.0">
-         <children>
-            <TableView fx:id="InShowDeliveredDeliveredTableView" layoutX="14.0" layoutY="69.0" prefHeight="200.0" prefWidth="384.0">
-              <columns>
-                <TableColumn fx:id="InShowDeliveredNameColumn" prefWidth="127.0" text="Name" />
-                <TableColumn fx:id="InShowDeliveredQuantityColumn" prefWidth="111.0" text="Quantity" />
-                  <TableColumn fx:id="InShowDeliveredDeliveredDateColumn" prefWidth="145.0" text="Delivered Date" />
-              </columns>
-            </TableView>
-            <TextField fx:id="InShowDeliveredSearchTextField" layoutX="182.0" layoutY="37.0" prefHeight="25.0" prefWidth="218.0" promptText="Search" />
-         </children></AnchorPane>
-      <AnchorPane fx:id="HelpWindow" layoutX="180.0" layoutY="108.0" prefHeight="283.0" prefWidth="414.0" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="16.0">
-         <children>
-            <Label alignment="CENTER" layoutX="23.0" layoutY="50.0" prefHeight="150.0" prefWidth="365.0" text="Help Window">
+            <AnchorPane fx:id="ShowWindow" layoutX="180.0" layoutY="108.0" prefHeight="469.0" prefWidth="574.0" visible="false" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+               <children>
+                  <TableView fx:id="InShowDeliveredDeliveredTableView" layoutX="14.0" layoutY="69.0" prefHeight="392.0" prefWidth="557.0" styleClass="table-view1" stylesheets="@styleSheet.css">
+                    <columns>
+                      <TableColumn fx:id="InShowDeliveredNameColumn" prefWidth="206.39996910095215" text="Name" />
+                      <TableColumn fx:id="InShowDeliveredQuantityColumn" prefWidth="148.800048828125" text="Quantity" />
+                        <TableColumn fx:id="InShowDeliveredDeliveredDateColumn" prefWidth="204.79995727539062" text="Delivered Date" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="InShowDeliveredSearchTextField" layoutX="14.0" layoutY="35.0" prefHeight="25.0" prefWidth="218.0" promptText="Search" styleClass="table-view1" stylesheets="@styleSheet.css" />
+                  <Label layoutX="218.0" layoutY="2.0" prefHeight="24.0" prefWidth="138.0" text="Delivered drugs">
+                     <font>
+                        <Font name="Wingdings" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="HelpWindow" layoutX="295.0" layoutY="33.0" prefHeight="458.0" prefWidth="566.0" visible="false" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="7.0">
+               <children>
+                  <Label layoutX="219.0" layoutY="95.0" text="PHARMACY">
+                     <font>
+                        <Font name="Microsoft Yi Baiti" size="28.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="246.0" layoutY="129.0" text="version: 1.0.0" />
+                  <Label layoutX="144.0" layoutY="147.0" text="Copyright (c) 2021 Pharmacy. All rights are reserved" />
+                  <Label layoutX="115.0" layoutY="189.0" prefHeight="22.0" prefWidth="332.0" text="A program for pharmacies to facilitate the sale">
+                     <font>
+                        <Font name="Leelawadee" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="122.0" layoutY="211.0" prefHeight="26.0" prefWidth="316.0" text="and delivery of drugs with an easy interface.">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="100.0" layoutY="269.0" prefHeight="22.0" prefWidth="184.0" text="Purpose of the program:">
+                     <font>
+                        <Font name="Yu Gothic Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="94.0" layoutY="303.0" text="-Facilitating the supply of drugs">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="94.0" layoutY="321.0" text="-Timely ordering of medicines">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="94.0" layoutY="339.0" text="-Work for a supplier with a pharmacy">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="94.0" layoutY="357.0" text="-Convenience of working with the drug database.">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="134.0" layoutY="422.0" text="Our contact: +996 500 81 18 81 / pharmacy@mail.com">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="230.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo2.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="259.0" text="Info">
+                     <font>
+                        <Font name="Wingdings 2" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="SearchWindow" layoutX="170.0" layoutY="98.0" prefHeight="470.0" prefWidth="558.0" visible="false" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="16.0">
+               <children>
+                  <TableView fx:id="InSearchDrugsListTableView" layoutX="7.0" layoutY="64.0" prefHeight="392.0" prefWidth="543.0" styleClass="table-view1" stylesheets="@styleSheet.css">
+                    <columns>
+                      <TableColumn fx:id="InSearchNameColumn" prefWidth="173.59996938705444" text="Name" />
+                      <TableColumn fx:id="InsearchQuantityColumn" prefWidth="160.79998779296875" text="Quantity" />
+                        <TableColumn fx:id="InSearchPriceColumn" prefWidth="208.80001831054688" text="Price" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="InSearchSearchTextfield" layoutX="7.0" layoutY="29.0" prefHeight="26.0" prefWidth="199.0" promptText="Search" styleClass="table-view1" stylesheets="@styleSheet.css" />
+                  <Label layoutX="249.0" layoutY="2.0" text="Search">
+                     <font>
+                        <Font name="Wingdings 2" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="DeliverDrugsWindow" layoutX="180.0" layoutY="108.0" prefHeight="470.0" prefWidth="566.0" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="8.0">
+               <children>
+                  <TextField fx:id="InDeliverDrugsNameTextField" layoutX="238.0" layoutY="165.0" prefHeight="25.0" prefWidth="89.0" promptText="Name" />
+                  <TextField fx:id="InDeliverDrugsQuantityTextField" layoutX="238.0" layoutY="224.0" prefHeight="25.0" prefWidth="89.0" promptText="Quantity" />
+                  <TableView fx:id="InDeliverDrugsToDeliverListTableView" layoutX="353.0" layoutY="54.0" prefHeight="314.0" prefWidth="190.0" styleClass="table-view1" stylesheets="@styleSheet.css">
+                    <columns>
+                      <TableColumn fx:id="InDeliverDrugsNameColumn" prefWidth="95.199951171875" text="Name" />
+                      <TableColumn fx:id="InDeliverDrugsQuantityColumn" minWidth="8.0" prefWidth="94.40005493164062" text="Quantity" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="InDeliverDrugsAddButton" layoutX="263.0" layoutY="271.0" mnemonicParsing="false" onAction="#InDeliverDrugsClickAddButton" styleClass="button4" stylesheets="@styleSheet.css" text="Add" textFill="WHITE" />
+                  <Button fx:id="InDeliverDrugsDeliverButton" layoutX="465.0" layoutY="377.0" mnemonicParsing="false" onAction="#InDeliverDrugsClickDeliverButton" prefHeight="26.0" prefWidth="64.0" styleClass="button4" stylesheets="@styleSheet.css" text="Deliver" textFill="WHITE" />
+                  <Label fx:id="InDeliverDrugsNameErrorLabel" layoutX="165.0" layoutY="69.0" prefHeight="17.0" prefWidth="77.0" textFill="#e80b0b" />
+                  <Label fx:id="InDeliverDrugsQuantityErrorLabel" layoutX="239.0" layoutY="213.0" prefHeight="17.0" prefWidth="89.0" textFill="#f80e0e" />
+                  <Label fx:id="InDeliverDrugsSuccesLabel" alignment="TOP_CENTER" layoutX="142.0" layoutY="331.0" prefHeight="17.0" prefWidth="156.0" textFill="#07dd27" />
+                  <Button fx:id="InDeliverDrugsRemoveButton" layoutX="368.0" layoutY="377.0" mnemonicParsing="false" onAction="#ClickInDeliverDrugsRemoveButton" prefHeight="26.0" prefWidth="70.0" styleClass="button4" stylesheets="@styleSheet.css" text="Remove" textFill="WHITE" />
+                  <TableView fx:id="InDeliverDrugsOrderedListTableView" layoutX="14.0" layoutY="53.0" prefHeight="314.0" prefWidth="190.0" styleClass="table-view1" stylesheets="@styleSheet.css">
+                     <columns>
+                        <TableColumn fx:id="InDeliverDrugsNameOrderedColumn" prefWidth="94.39996528625488" text="Name" />
+                        <TableColumn fx:id="InDeliverDrugsQuantityOrderedColumn" minWidth="8.0" prefWidth="95.99999237060547" text="Quantity" />
+                     </columns>
+                  </TableView>
+                  <Label alignment="TOP_CENTER" layoutX="67.0" layoutY="31.0" prefHeight="17.0" prefWidth="89.0" text="Ordered List">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="TOP_CENTER" layoutX="401.0" layoutY="31.0" prefHeight="22.0" prefWidth="100.0" text="ToDeliverList">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="224.0" layoutY="2.0" text="Deliver drugs">
+                     <font>
+                        <Font name="Wingdings 2" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Pane prefHeight="500.0" prefWidth="218.0" style="-fx-background-color: #d5cdc0;">
+               <children>
+                  <Button fx:id="SearchDrugButton" layoutX="28.0" layoutY="147.0" mnemonicParsing="false" onAction="#ClickSearchDrugButton" prefHeight="32.0" prefWidth="162.0" styleClass="button4" stylesheets="@styleSheet.css" text="Search Drug" textFill="WHITE">
+                     <font>
+                        <Font name="Wingdings 2" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="DeliverDrugsButton" layoutX="28.0" layoutY="191.0" mnemonicParsing="false" onAction="#ClickDeliverDrugsButton" prefHeight="32.0" prefWidth="162.0" styleClass="button4" stylesheets="@styleSheet.css" text="Deliver Drugs" textFill="WHITE">
+                     <font>
+                        <Font name="Wingdings 2" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="ShowDeliveredDrugsButton" layoutX="28.0" layoutY="233.0" mnemonicParsing="false" onAction="#ClickShowDeliveredDrugsButton" prefHeight="32.0" prefWidth="162.0" styleClass="button4" stylesheets="@styleSheet.css" text="Show Delivered Drugs" textFill="WHITE">
+                     <font>
+                        <Font name="Wingdings 2" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="HelpButton" layoutX="28.0" layoutY="274.0" mnemonicParsing="false" onAction="#ClickHelpButton" prefHeight="32.0" prefWidth="162.0" styleClass="button4" stylesheets="@styleSheet.css" text="Help" textFill="WHITE">
+                     <font>
+                        <Font name="Wingdings 2" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="BackToAuthorizationButton" layoutX="28.0" layoutY="315.0" mnemonicParsing="false" onAction="#ClickBackToAuthorizationButton" prefHeight="38.0" prefWidth="162.0" styleClass="button4" text="Sign out" textFill="WHITE">
+                     <stylesheets>
+                        <URL value="@styleSheet.css" />
+                        <URL value="@styleSheet.css" />
+                     </stylesheets>
+                     <font>
+                        <Font name="Wingdings 2" size="12.0" />
+                     </font>
+                  </Button>
+                  <Circle fill="WHITE" layoutX="109.0" layoutY="53.0" radius="39.0" stroke="BLACK" strokeType="INSIDE" />
+                  <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="59.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label fx:id="PharmacistAccLabel" alignment="TOP_CENTER" layoutX="403.0" layoutY="-1.0" prefHeight="27.0" prefWidth="199.0" text="Supplierman's account">
                <font>
-                  <Font name="System Bold" size="45.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-         </children></AnchorPane>
-      <AnchorPane fx:id="SearchWindow" layoutX="170.0" layoutY="98.0" prefHeight="283.0" prefWidth="414.0" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="16.0">
-         <children>
-            <TableView fx:id="InSearchDrugsListTableView" layoutX="21.0" layoutY="50.0" prefHeight="213.0" prefWidth="384.0">
-              <columns>
-                <TableColumn fx:id="InSearchNameColumn" prefWidth="150.0" text="Name" />
-                <TableColumn fx:id="InsearchQuantityColumn" prefWidth="106.0" text="Quantity" />
-                  <TableColumn fx:id="InSearchPriceColumn" prefWidth="127.0" text="Price" />
-              </columns>
-            </TableView>
-            <TextField fx:id="InSearchSearchTextfield" layoutX="203.0" layoutY="14.0" prefHeight="25.0" prefWidth="179.0" promptText="Search" />
+            <Line endX="251.5999755859375" layoutX="427.0" layoutY="27.0" startX="-100.0" />
          </children>
-      </AnchorPane>
-      <AnchorPane fx:id="DeliverDrugsWindow" layoutX="180.0" layoutY="108.0" prefHeight="283.0" prefWidth="414.0" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="16.0">
-         <children>
-            <TextField fx:id="InDeliverDrugsNameTextField" layoutX="159.0" layoutY="35.0" prefHeight="25.0" prefWidth="89.0" promptText="Name" />
-            <TextField fx:id="InDeliverDrugsQuantityTextField" layoutX="159.0" layoutY="94.0" prefHeight="25.0" prefWidth="89.0" promptText="Quantity" />
-            <TableView fx:id="InDeliverDrugsToDeliverListTableView" layoutX="251.0" layoutY="21.0" prefHeight="224.0" prefWidth="156.0">
-              <columns>
-                <TableColumn fx:id="InDeliverDrugsNameColumn" prefWidth="82.0" text="Name" />
-                <TableColumn fx:id="InDeliverDrugsQuantityColumn" minWidth="8.0" prefWidth="73.0" text="Quantity" />
-              </columns>
-            </TableView>
-            <Button fx:id="InDeliverDrugsAddButton" layoutX="206.0" layoutY="142.0" mnemonicParsing="false" onAction="#InDeliverDrugsClickAddButton" text="Add" />
-            <Button fx:id="InDeliverDrugsDeliverButton" layoutX="348.0" layoutY="257.0" mnemonicParsing="false" onAction="#InDeliverDrugsClickDeliverButton" text="Deliver" />
-            <Label fx:id="InDeliverDrugsNameErrorLabel" layoutX="165.0" layoutY="69.0" prefHeight="17.0" prefWidth="77.0" textFill="#e80b0b" />
-            <Label fx:id="InDeliverDrugsQuantityErrorLabel" layoutX="159.0" layoutY="125.0" prefHeight="17.0" prefWidth="89.0" textFill="#f80e0e" />
-            <Label alignment="TOP_CENTER" layoutX="285.0" layoutY="6.0" prefHeight="17.0" prefWidth="89.0" text="ToDeliverList" />
-            <Label fx:id="InDeliverDrugsSuccesLabel" alignment="TOP_CENTER" layoutX="69.0" layoutY="237.0" prefHeight="17.0" prefWidth="156.0" textFill="#07dd27" />
-            <Button fx:id="InDeliverDrugsRemoveButton" layoutX="277.0" layoutY="257.0" mnemonicParsing="false" onAction="#ClickInDeliverDrugsRemoveButton" text="Remove" />
-            <TableView fx:id="InDeliverDrugsOrderedListTableView" layoutY="21.0" prefHeight="224.0" prefWidth="156.0">
-               <columns>
-                  <TableColumn fx:id="InDeliverDrugsNameOrderedColumn" prefWidth="82.0" text="Name" />
-                  <TableColumn fx:id="InDeliverDrugsQuantityOrderedColumn" minWidth="8.0" prefWidth="73.0" text="Quantity" />
-               </columns>
-            </TableView>
-            <Label alignment="TOP_CENTER" layoutX="34.0" layoutY="6.0" prefHeight="17.0" prefWidth="89.0" text="Ordered List" />
-         </children>
+         <effect>
+            <DropShadow />
+         </effect>
       </AnchorPane>
    </children>
-</AnchorPane>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

@@ -41,7 +41,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="windowChangePrice" layoutX="220.0" layoutY="29.0" prefHeight="463.0" prefWidth="558.0" visible="false" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="29.0">
+            <AnchorPane fx:id="windowChangePrice" layoutX="220.0" layoutY="29.0" prefHeight="463.0" prefWidth="558.0" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="29.0">
                <children>
                   <TextField fx:id="NameTextField" layoutX="63.0" layoutY="86.0" promptText="Name" />
                   <TextField fx:id="PriceTextField" layoutX="63.0" layoutY="127.0" promptText="Price" />
@@ -54,9 +54,9 @@
                         <Font name="Wingdings 2" size="15.0" />
                      </font></Label>
                   <Button fx:id="ChangeButton" alignment="TOP_CENTER" layoutX="220.0" layoutY="229.0" mnemonicParsing="false" onAction="#ClickChangePriceButton" prefHeight="25.0" prefWidth="111.0" text="Change" />
-                  <Label fx:id="NameErrorTextField" alignment="TOP_CENTER" layoutX="445.0" layoutY="62.0" prefHeight="17.0" prefWidth="99.0" textAlignment="CENTER" textFill="#f50e0e" />
-                  <Label fx:id="PriceErrorTextField" alignment="TOP_CENTER" layoutX="438.0" layoutY="103.0" prefHeight="17.0" prefWidth="99.0" textAlignment="CENTER" textFill="#f50e0e" />
-                  <Label fx:id="SuccessPriceChangeTextField1" alignment="TOP_CENTER" layoutX="199.0" layoutY="214.0" prefHeight="17.0" prefWidth="162.0" textAlignment="CENTER" textFill="#2bf50f" />
+                  <Label fx:id="NameErrorTextField" alignment="TOP_CENTER" layoutX="62.0" layoutY="58.0" prefHeight="18.0" prefWidth="150.0" textAlignment="CENTER" textFill="#f50e0e" />
+                  <Label fx:id="PriceErrorTextField" alignment="TOP_CENTER" layoutX="88.0" layoutY="162.0" prefHeight="17.0" prefWidth="99.0" textAlignment="CENTER" textFill="#f50e0e" />
+                  <Label fx:id="SuccessPriceChangeTextField1" alignment="TOP_CENTER" layoutX="194.0" layoutY="264.0" prefHeight="17.0" prefWidth="162.0" textAlignment="CENTER" textFill="#2bf50f" />
                   <Label layoutX="222.0" text="Change Price">
                      <font>
                         <Font name="Wingdings 2" size="20.0" />
@@ -119,20 +119,20 @@
                      </columns>
                   </TableView>
                   <Button fx:id="sellButtonInSellAnchorpane" layoutX="452.0" layoutY="420.0" mnemonicParsing="false" onAction="#ClickSellButtonInSellAnchorpane" prefHeight="26.0" prefWidth="54.0" text="Sell" />
-                  <TextField fx:id="NameForSellTextField" layoutX="66.0" layoutY="88.0" prefHeight="25.0" prefWidth="123.0" promptText="Name" AnchorPane.bottomAnchor="349.6" AnchorPane.leftAnchor="66.0" />
-                  <TextField fx:id="QuantityForSellTextField" layoutX="66.0" layoutY="124.0" prefHeight="25.0" prefWidth="123.0" promptText="Quantity" />
-                  <TextField fx:id="DiscountForSellTextField" layoutX="66.0" layoutY="164.0" prefHeight="25.0" prefWidth="123.0" promptText="Discount" />
+                  <TextField fx:id="NameForSellTextField" layoutX="48.0" layoutY="94.0" prefHeight="25.0" prefWidth="123.0" promptText="Name" AnchorPane.bottomAnchor="343.6" AnchorPane.leftAnchor="48.0" />
+                  <TextField fx:id="QuantityForSellTextField" layoutX="48.0" layoutY="130.0" prefHeight="25.0" prefWidth="123.0" promptText="Quantity" />
+                  <TextField fx:id="DiscountForSellTextField" layoutX="48.0" layoutY="170.0" prefHeight="25.0" prefWidth="123.0" promptText="Discount" />
                   <Label alignment="TOP_CENTER" layoutX="353.0" layoutY="39.0" prefHeight="17.0" prefWidth="99.0" text="Selling List">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Button fx:id="AddToListButton" layoutX="78.0" layoutY="206.0" mnemonicParsing="false" onAction="#ClickAddToListButton" prefHeight="25.0" prefWidth="99.0" text="Add To List" />
-                  <Label fx:id="nameErrorInSellAnchorpane" layoutX="200.0" layoutY="127.0" prefHeight="20.0" prefWidth="123.0" textFill="#f20d0d" />
-                  <Label fx:id="quantityErrorInSellAnchorpane" layoutX="200.0" layoutY="168.0" prefHeight="17.0" prefWidth="99.0" textFill="#f20d0d" />
-                  <Label fx:id="DiscountErrorInSellAnchorpane" layoutX="200.0" layoutY="92.0" prefHeight="17.0" prefWidth="99.0" textFill="#f20d0d" />
+                  <Button fx:id="AddToListButton" layoutX="60.0" layoutY="212.0" mnemonicParsing="false" onAction="#ClickAddToListButton" prefHeight="25.0" prefWidth="99.0" text="Add To List" />
+                  <Label fx:id="nameErrorInSellAnchorpane" layoutX="170.0" layoutY="97.0" prefHeight="20.0" prefWidth="123.0" textFill="#f20d0d" />
+                  <Label fx:id="quantityErrorInSellAnchorpane" layoutX="182.0" layoutY="134.0" prefHeight="17.0" prefWidth="99.0" textFill="#f20d0d" />
+                  <Label fx:id="DiscountErrorInSellAnchorpane" layoutX="182.0" layoutY="174.0" prefHeight="17.0" prefWidth="99.0" textFill="#f20d0d" />
                   <Label fx:id="TotalCostLabelInSellAnchorpane" layoutX="299.0" layoutY="425.0" prefHeight="17.0" prefWidth="149.0" text="Total cost:" />
-                  <Button fx:id="RemoveButtonInSellAnchorpane" layoutX="77.0" layoutY="245.0" mnemonicParsing="false" onAction="#ClickRemoveButtonInSellButton" prefHeight="26.0" prefWidth="99.0" text="Remove" />
+                  <Button fx:id="RemoveButtonInSellAnchorpane" layoutX="59.0" layoutY="251.0" mnemonicParsing="false" onAction="#ClickRemoveButtonInSellButton" prefHeight="26.0" prefWidth="99.0" text="Remove" />
                   <Label layoutX="263.0" layoutY="-1.0" prefHeight="24.0" prefWidth="31.0" text="Sell">
                      <font>
                         <Font size="20.0" />
@@ -204,7 +204,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="SoldWindow" layoutX="222.0" layoutY="28.0" prefHeight="454.0" prefWidth="558.0" AnchorPane.leftAnchor="222.0" AnchorPane.topAnchor="28.0">
+            <AnchorPane fx:id="SoldWindow" layoutX="222.0" layoutY="28.0" prefHeight="454.0" prefWidth="558.0" visible="false" AnchorPane.leftAnchor="222.0" AnchorPane.topAnchor="28.0">
                <children>
                   <TextField fx:id="InSoldAnchopaneSearchTextField" layoutX="20.0" layoutY="33.0" prefHeight="25.0" prefWidth="201.0" promptText="Search" style="-fx-background-color: #ffffff;" styleClass="table-view" />
                   <TableView fx:id="InSoldAnchopaneSoldTableView" layoutX="20.0" layoutY="63.0" prefHeight="401.0" prefWidth="518.0">
@@ -240,9 +240,9 @@
                   <Button fx:id="SoldButton" layoutX="28.0" layoutY="266.0" mnemonicParsing="false" onAction="#ClickOnSoldButton" prefHeight="35.0" prefWidth="162.0" text="Sold" />
                   <Button fx:id="OrderDrugButton" layoutX="28.0" layoutY="323.0" mnemonicParsing="false" onAction="#ClickOnOrderDrugButton" prefHeight="35.0" prefWidth="162.0" text="Order Drug" />
                   <Button fx:id="HelpButton" layoutX="28.0" layoutY="383.0" mnemonicParsing="false" onAction="#ClickOnHelpButton" prefHeight="35.0" prefWidth="162.0" text="Help" />
-                  <Button fx:id="BackToAuthorization" layoutX="28.0" layoutY="439.0" mnemonicParsing="false" onAction="#ClickOnBackToAuthorization" prefHeight="35.0" prefWidth="162.0" text="Back To Authoriization" />
+                  <Button fx:id="BackToAuthorization" layoutX="28.0" layoutY="439.0" mnemonicParsing="false" onAction="#ClickOnBackToAuthorization" prefHeight="35.0" prefWidth="162.0" text="Sign out" />
                   <Circle fill="WHITE" layoutX="109.0" layoutY="48.0" radius="39.0" stroke="BLACK" strokeType="INSIDE" />
-                  <ImageView fitHeight="109.0" fitWidth="99.0" layoutX="60.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="59.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@logo.png" />
                      </image>

@@ -21,13 +21,15 @@ public class PrintCheckWindowController {
     }
 
     @FXML
-    void ClickYesPrintChechButton(ActionEvent event) {
-        Pharmacist p = new Pharmacist();
-
-        //make make check function
-
-
+    void ClickYesPrintCheckButton(ActionEvent event) {
+        
     }
 
 }
+
+
+
+
+
+
 
