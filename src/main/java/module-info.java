@@ -1,7 +1,7 @@
 module com.example.pharmacy {
     requires javafx.controls;
     requires javafx.fxml;
-
+    requires itextpdf;
 
     requires java.sql;
 

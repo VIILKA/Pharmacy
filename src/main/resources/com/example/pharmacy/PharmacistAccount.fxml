@@ -41,7 +41,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="windowChangePrice" layoutX="220.0" layoutY="29.0" prefHeight="463.0" prefWidth="558.0" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="29.0">
+            <AnchorPane fx:id="windowChangePrice" layoutX="220.0" layoutY="29.0" prefHeight="463.0" prefWidth="558.0" visible="false" AnchorPane.leftAnchor="220.0" AnchorPane.topAnchor="29.0">
                <children>
                   <TextField fx:id="NameTextField" layoutX="63.0" layoutY="86.0" promptText="Name" />
                   <TextField fx:id="PriceTextField" layoutX="63.0" layoutY="127.0" promptText="Price" />
@@ -109,7 +109,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="windowSell" layoutX="229.0" layoutY="29.0" prefHeight="463.0" prefWidth="558.0" visible="false" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="29.0">
+            <AnchorPane fx:id="windowSell" layoutX="229.0" layoutY="29.0" prefHeight="463.0" prefWidth="558.0" AnchorPane.leftAnchor="229.0" AnchorPane.topAnchor="29.0">
                <children>
                   <TableView fx:id="SellingDrugListTable" layoutX="299.0" layoutY="67.0" prefHeight="349.0" prefWidth="207.0" AnchorPane.bottomAnchor="46.599999999999966" AnchorPane.rightAnchor="52.19999999999999">
                      <columns>

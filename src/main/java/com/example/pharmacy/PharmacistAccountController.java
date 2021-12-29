@@ -747,9 +747,19 @@ public class PharmacistAccountController {
     @FXML
     void ClickSellButtonInSellAnchorpane(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
 
+
+        int count = 0;
         for(SellList s : SellingListTableValues){
+            count++;
             p.sellFunc(s.getName(), s.getQuantity(), s.getDiscount());
         }
+        Connection conn = dbConnection.getConnected();
+        String query = "UPDATE dialogwindows SET value = '" + count + "' WHERE name = 'chek_make'";
+        PreparedStatement prs = conn.prepareStatement(query);
+        prs.executeUpdate();
+
+        prs.close();
+        conn.close();
 
         SellingListTableValues.clear();
         SellingDrugListTable.setItems(SellingListTableValues);
